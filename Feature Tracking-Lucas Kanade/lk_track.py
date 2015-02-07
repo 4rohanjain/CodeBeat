@@ -72,12 +72,14 @@ class App:
                 p = cv2.goodFeaturesToTrack(frame_gray, mask = mask, **feature_params)
                 if p is not None:
                     for x, y in np.float32(p).reshape(-1, 2):
-                        if x >= coords[0]:
-                            if x <= coords[1]:
-                                if y >= coords[4]:
-                                    if y <= coords[5]:
+                        if x > coords[0]:
+                            if x < coords[1]:
+                                if y > coords[4]:
+                                    if y < coords[5]:
                                         self.tracks.append([(x, y)])
-
+                                elif y > coords[2]:
+                                    if y < coords[3]:
+                                        self.tracks.append([(x, y)])
 
             self.frame_idx += 1
             self.prev_gray = frame_gray
