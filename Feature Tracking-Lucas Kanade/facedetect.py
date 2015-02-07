@@ -25,6 +25,7 @@ def draw_rects(img, rects, color):
         sub2_y2 = int(y2 - math.ceil(0.1*(y2-y1)))
         cv2.rectangle(img, (sub_x1, sub1_y1), (sub_x2, sub1_y2), color, 2)
         cv2.rectangle(img, (sub_x1, sub2_y1), (sub_x2, sub2_y2), color, 2)
+        return [sub_x1,sub_x2,sub1_y1,sub2_y2,sub2_y1,sub2_y2]
 
 def issmallest(rects,smallest_bb):
     small_lenx = smallest_bb[0][2] - smallest_bb[0][0]
